@@ -44,7 +44,7 @@ public class OrderService {
         try {
             orderRepository.deleteById(OrderId);
         } catch (Exception exception) {
-            throw new RuntimeException("Error creating new user ...");
+            throw new RuntimeException("Error deleting order ...");
         }
     }
 
@@ -53,7 +53,7 @@ public class OrderService {
             Optional<OrderEntity> order = orderRepository.findById(orderId);
             return order.orElse(null);
         } catch (Exception exception) {
-            throw new RuntimeException("Error creating new user ...");
+            throw new RuntimeException("Error retrieving order ...");
         }
     }
 
@@ -62,7 +62,15 @@ public class OrderService {
         try {
             return orderRepository.findByUserId(userId);
         } catch (Exception exception) {
-            throw new RuntimeException("Error creating new user ...");
+            throw new RuntimeException("Error retrieving user orders ...");
+        }
+    }
+
+    public OrderEntity getUserOrder(Long userId, Long orderId) {
+        try {
+            return orderRepository.findByUserIdAndOrderId(userId, orderId);
+        } catch (Exception exception) {
+            throw new RuntimeException("Error retrieving user order ...");
         }
     }
 

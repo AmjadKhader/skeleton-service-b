@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "order_details")
 @NoArgsConstructor
-public class OrderEntity implements Serializable {
+public class OrderEntity {
     @Id
     @Column(name = "order_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
